@@ -1,14 +1,22 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+/* =====================================================
+   KASHFIYANAZ & WASIM — ROYAL NIKAH INVITATION
+   Ivory • Sage Green • Antique Gold • Floral Garden
+   Image filenames are used exactly as supplied:
+   garden-background.png.png
+   realistic-envelope.png.png
+   ===================================================== */
 
 :root {
   --ivory: #fbf7ed;
   --paper: #fffdf7;
-  --sage: #647b67;
+  --sage: #74866a;
   --deep-sage: #344b3a;
   --gold: #b89a5e;
   --soft-gold: #e1d0a7;
   --ink: #344537;
+  --royal-shadow: 0 20px 55px rgba(35, 43, 29, 0.24);
 }
 
 * {
@@ -23,23 +31,64 @@ body {
   margin: 0;
   min-height: 100vh;
   padding: 28px 16px;
-  background:
-    radial-gradient(ellipse at top, #829781 0%, transparent 55%),
-    linear-gradient(135deg, #536d57, #293f31);
+  overflow-x: hidden;
   color: var(--ink);
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
+  background-color: #e9dfc9;
+  background-image: url("./garden-background.png.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
+/* Gentle lantern accents */
+body::before,
+body::after {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  font-size: 2rem;
+  animation: lanternGlow 3s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 12px #e8c779);
+}
+
+body::before {
+  content: "🏮";
+  left: 12px;
+  top: 20%;
+}
+
+body::after {
+  content: "🏮";
+  right: 12px;
+  top: 50%;
+  animation-delay: 1.5s;
+}
+
+@keyframes lanternGlow {
+  from {
+    opacity: 0.55;
+    transform: translateY(0) rotate(-3deg);
+    filter: drop-shadow(0 0 5px #e8c779);
+  }
+   to {
+    opacity: 1;
+    transform: translateY(-8px) rotate(3deg);
+    filter: drop-shadow(0 0 18px #e8c779);
+  }
+}
+
+/* Main page frame */
 .page {
   position: relative;
   width: min(100%, 760px);
   min-height: 90vh;
   margin: 0 auto;
   padding: 20px;
+  background: transparent;
 }
-
-/* Fine gold frame around the invitation */
 
 .page::before {
   content: "";
@@ -51,47 +100,81 @@ body {
   pointer-events: none;
 }
 
+/* Opening and invitation panels */
 .envelope-section,
 .invitation {
   position: relative;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at top, #ffffff 0%, transparent 55%),
-    var(--ivory);
-  border: 1px solid var(--soft-gold);
+  isolation: isolate;
   padding: clamp(35px, 7vw, 72px) clamp(18px, 6vw, 60px);
   margin: 12px 0;
-  box-shadow: 0 20px 55px #15291c45;
+  border: 1px solid var(--soft-gold);
+  box-shadow: var(--royal-shadow);
+  background-color: rgba(255, 250, 240, 0.12);
+  background-image:
+    linear-gradient(rgba(255, 250, 240, 0.08), rgba(255, 250, 240, 0.08)),
+    url("./garden-background.png.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.invitation {
+  color: var(--ink);
+  animation: invitationReveal 1s ease both;
 }
 
-/* Decorative corners */
-
-
-.invitation::after {
-  content: "❧";
-  position: absolute;
-  color: var(--gold);
-  font-size: 36px;
-  opacity: 0.8;
+.invitation[hidden] {
+  display: none !important;
 }
 
+@keyframes invitationReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fine gold inner frame */
 .envelope-section::before,
 .invitation::before {
-  top: 10px;
-  left: 16px;
+  content: "";
+  position: absolute;
+  inset: 12px;
+  z-index: 0;
+  border: 1px solid rgba(184, 154, 94, 0.55);
+  pointer-events: none;
 }
 
+/* Small floral ornament at the bottom */
 .envelope-section::after,
 .invitation::after {
-  right: 16px;
-  bottom: 10px;
-  transform: rotate(180deg);
+  content: "❀  ✧  ❀";
+  position: absolute;
+  z-index: 0;
+  right: 22px;
+  bottom: 20px;
+  color: var(--gold);
+  font-size: 23px;
+  letter-spacing: 5px;
+  opacity: 0.85;
+  pointer-events: none;
 }
 
+.envelope-section > *,
+.invitation > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Opening screen text */
 .bismillah {
-  font-size: clamp(23px, 4vw, 30px);
-  color: var(--deep-sage);
   margin: 0 0 25px;
+  color: var(--deep-sage);
+  font-size: clamp(23px, 4vw, 30px);
 }
 
 .eyebrow,
@@ -107,73 +190,215 @@ body {
   margin: 18px 0;
 }
 
-/* Envelope */
-
-
-.envelope:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 18px 32px #293f3140;
-}
-.envelope-hint {
-  position: absolute;
-  bottom: 22px;
-  left: 0;
-  right: 0;
-  color: var(--deep-sage);
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-  letter-spacing: 3px;
-}
-
 .welcome-note {
   color: var(--sage);
   font-size: 20px;
   font-style: italic;
 }
+/* =====================================================
+   REALISTIC ENVELOPE
+   The image replaces the CSS-drawn envelope.
+   The invisible seal button remains clickable.
+   ===================================================== */
 
-/* Main invitation */
-
-.invitation[hidden] {
-  display: none;
+.envelope-scene {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 560px);
+  height: clamp(260px, 52vw, 380px);
+  margin: 25px auto 12px;
+  perspective: 1000px;
+  animation: envelopeFloat 5s ease-in-out infinite;
 }
 
-.invitation {
-  animation: reveal 1.1s ease both;
+/* Place the real green-and-gold envelope over the letter */
+.envelope-scene::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  background-image: url("./realistic-envelope.png.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: drop-shadow(0 18px 18px rgba(38, 39, 26, 0.25));
+  transform-origin: center top;
+  opacity: 1;
+  transition: opacity 0.65s ease, transform 0.85s ease;
+  pointer-events: none;
 }
 
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
+@keyframes envelopeFloat {
+  0%, 100% {
     transform: translateY(0);
   }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
-.ornament {
+/* Letter emerging when the envelope is opened */
+.letter-preview {
+  position: absolute;
+  z-index: 1;
+  left: 12%;
+  bottom: 8%;
+  width: 76%;
+  height: 72%;
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  background: linear-gradient(145deg, #fffdf7, #f5ead0);
+  border: 1px solid var(--gold);
+  box-shadow: 0 12px 35px rgba(53, 75, 61, 0.2);
+  transform: translateY(0);
+  transition: transform 1s ease 0.25s;
+}
+
+.preview-ornament {
   color: var(--gold);
-  letter-spacing: 4px;
-  font-size: 21px;
-  margin: 10px 0 28px;
+  font-size: 24px;
 }
 
-h1 {
+.preview-names {
+  color: var(--deep-sage);
   font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 8vw, 68px);
-  line-height: 1.15;
-  font-weight: 500;
+  font-size: clamp(19px, 5vw, 25px);
+}
+
+.preview-subtitle {
+  color: var(--gold);
+  font-size: 17px;
+  font-style: italic;
+}
+
+/* Hide the old CSS-drawn envelope pieces */
+.envelope-body,
+.envelope-pocket,
+.envelope-flap {
+  display: none !important;
+}
+
+/* Use the realistic envelope image */
+.envelope-scene {
+  position: relative;
+  isolation: isolate;
+}
+
+.envelope-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url("./realistic-envelope.png.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Keep the letter behind the envelope */
+.letter-preview {
+  position: absolute;
+  z-index: 0;
+  transition: transform 1s ease;
+}
+
+/* Make the gold seal clickable */
+.open-envelope {
+  position: absolute;
+  z-index: 5;
+  top: 53%;
+  left: 50%;
+  width: clamp(58px, 12vw, 88px);
+  height: clamp(58px, 12vw, 88px);
+  padding: 0;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.open-envelope .seal-text {
+  color: transparent;
+}
+
+.open-envelope:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+/* Envelope opening animation */
+.envelope-scene.is-open::before {
+  opacity: 0;
+  transform: translateY(-24px) scale(0.97);
+}
+
+.envelope-scene.is-open .open-envelope {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.envelope-scene.is-open .letter-preview {
+  transform: translateY(-32%);
+}
+
+/* Instructions below the envelope */
+.envelope-hint {
+  color: var(--gold);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  animation: sealPulse 2s ease-in-out infinite;
+}
+
+@keyframes sealPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Invitation content */
+.ornament {
+  margin: 10px 0 28px;
+  color: var(--gold);
+  font-size: 21px;
+  letter-spacing: 4px;
+}
+h1 {
   margin: 28px 0 22px;
   color: var(--deep-sage);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(38px, 8vw, 68px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.invitation h1::before {
+  content: "❧  ✧  ❧";
+  display: block;
+  margin-bottom: 20px;
+  color: var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 27px;
+  letter-spacing: 8px;
 }
 
 .ampersand {
   display: block;
   margin: 7px 0;
   color: var(--gold);
-  font-style: italic;
   font-size: 0.8em;
+  font-style: italic;
 }
 
 .intro {
@@ -187,55 +412,61 @@ h1 {
   width: 110px;
   height: 1px;
   margin: 30px auto;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--gold),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
 }
 
+/* Date and time */
 .event-date {
+  margin: 18px 0 8px;
   color: var(--deep-sage);
   font-size: clamp(23px, 5vw, 32px);
-  margin: 18px 0 8px;
 }
 
 .event-time {
+  margin: 5px 0 25px;
   color: var(--gold);
   font-size: 24px;
-  margin: 5px 0 25px;
 }
 
+/* Venue */
 .venue h2 {
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(184, 154, 94, 0.33);
+  color: var(--deep-sage);
   font-family: 'Playfair Display', serif;
   font-size: 23px;
   font-weight: 500;
-  color: var(--deep-sage);
 }
-
 .venue p {
   font-size: 19px;
 }
 
+/* Google Maps link */
 .map-button {
   display: inline-block;
   margin: 16px 0;
   padding: 13px 28px;
   border: 1px solid var(--gold);
+  border-radius: 2px;
+  background: rgba(255, 253, 247, 0.75);
+  box-shadow: 3px 3px 0 rgba(184, 154, 94, 0.15);
   color: var(--deep-sage);
-  text-decoration: none;
   font-family: Arial, sans-serif;
   font-size: 11px;
   letter-spacing: 2px;
-  transition: background 0.25s, color 0.25s;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transition: background 0.25s, color 0.25s, transform 0.25s;
 }
 
 .map-button:hover {
+  transform: translateY(-2px);
   background: var(--deep-sage);
   color: var(--ivory);
 }
 
+/* Live countdown */
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -246,8 +477,14 @@ h1 {
 
 .countdown div {
   padding: 17px 5px;
-  background: #e8ecdf;
-  border: 1px solid #d8d8bd;
+  border: 1px solid var(--soft-gold);
+  background: rgba(255, 253, 247, 0.92);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.countdown div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(53, 75, 61, 0.12);
 }
 
 .countdown strong,
@@ -271,12 +508,13 @@ h1 {
   text-transform: uppercase;
 }
 
+/* Dua section */
 .dua {
   margin: 35px auto 20px;
   padding: 25px 18px;
   border-top: 1px solid var(--soft-gold);
   border-bottom: 1px solid var(--soft-gold);
-  background: #f4f0e4;
+  background: rgba(255, 250, 240, 0.92);
 }
 
 .arabic-dua {
@@ -297,22 +535,47 @@ h1 {
   font-size: 21px;
   font-style: italic;
 }
-
+/* Footer */
 footer {
   position: relative;
   padding: 18px 0 8px;
-  color: #f5e8c9;
+  color: var(--deep-sage);
   font-family: Arial, sans-serif;
   font-size: 9px;
   letter-spacing: 4px;
 }
 
-/* Smaller screens */
+/* Scroll reveal animations */
+.reveal-on-scroll {
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
 
-@media (max-width: 480px) {
+body.scroll-animations-ready .reveal-on-scroll:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
   body {
     padding: 12px 8px;
+    background-attachment: scroll;
   }
+
+  body::before,
+  body::after {
+    font-size: 1.35rem;
+    opacity: 0.5;
+  }
+
+  body::before { left: 3px; }
+  body::after { right: 3px; }
 
   .page {
     padding: 10px;
@@ -321,10 +584,20 @@ footer {
   .envelope-section,
   .invitation {
     padding: 42px 18px;
+    background-position: center;
   }
 
-  .envelope {
-    height: 190px;
+  .envelope-scene {
+    height: clamp(235px, 66vw, 300px);
+  }
+
+  .letter-preview {
+    height: 72%;
+  }
+
+  .wax-seal {
+    width: 58px;
+    height: 58px;
   }
 
   .countdown {
@@ -339,289 +612,31 @@ footer {
     font-size: 8px;
     letter-spacing: 0;
   }
+
+  .envelope-section::after,
+  .invitation::after {
+    right: 17px;
+    bottom: 16px;
+    font-size: 17px;
+  }
 }
 
+/* Accessibility: reduce motion when requested */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-}
 
-/* Elegant Islamic-inspired geometric frame */
-
-.invitation,
-.envelope-section {
-  background-color: var(--ivory);
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent 0,
-      transparent 17px,
-      #b89a5e12 18px,
-      transparent 19px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent 0,
-      transparent 17px,
-      #b89a5e12 18px,
-      transparent 19px
-    );
-  background-size: 28px 28px;
-}
-
-.invitation > *,
-.envelope-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Double gold frame */
-
-.invitation,
-.envelope-section {
-  outline: 1px solid #b89a5e80;
-  outline-offset: -13px;
-}
-
-/* Elegant floral arch above the names */
-
-.invitation h1::before {
-  content: "❧  ✧  ❧";
-  display: block;
-  margin-bottom: 20px;
-  color: var(--gold);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 27px;
-  letter-spacing: 8px;
-}
-
-/* A soft, elegant finish */
-
-.invitation {
-  background-blend-mode: normal;
-}
-
-.venue h2 {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #b89a5e55;
-  display: inline-block;
-}
-
-.map-button {
-  border-radius: 2px;
-  box-shadow: 3px 3px 0 #b89a5e25;
-}
-
-.map-button:hover {
-  transform: translateY(-2px);
-}
-
-/* ==================================
-   LUXURY ANIMATED ENVELOPE
-================================== */
-
-.envelope-scene {
-  position: relative;
-  width: min(100%, 390px);
-  height: 290px;
-  margin: 25px auto 12px;
-  perspective: 1000px;
-}
-
-/* The invitation card inside the envelope */
-
-.letter-preview {
-  position: absolute;
-  z-index: 1;
-  left: 8%;
-  bottom: 22px;
-  width: 84%;
-  height: 220px;
-  padding: 30px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 13px;
-  background: #fffdf7;
-  border: 1px solid var(--gold);
-  box-shadow: 0 4px 15px #26392a20;
-  transform: translateY(0);
-  transition: transform 1s ease 0.35s;
-}
-
-.preview-ornament {
-  color: var(--gold);
-  font-size: 24px;
-}
-
-.preview-names {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(19px, 5vw, 25px);
-  color: var(--deep-sage);
-}
-
-.preview-subtitle {
-  color: var(--gold);
-  font-size: 17px;
-  font-style: italic;
-}
-
-/* Envelope body */
-
-.envelope-body {
-  position: absolute;
-  z-index: 2;
-  bottom: 20px;
-  left: 0;
-  width: 100%;
-  height: 205px;
-  background: #b8c8ad;
-  border: 1px solid #a78b50;
-  box-shadow: 0 15px 30px #17291d30;
-}
-
-/* Front pocket: folded diagonal edges */
-
-.envelope-pocket {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background: linear-gradient(145deg, #d0dbc6, #a7bba0);
-  clip-path: polygon(
-    0 0,
-    50% 55%,
-    100% 0,
-    100% 100%,
-    0 100%
-  );
-}
-
-/* Top triangular flap */
-
-.envelope-flap {
-  position: absolute;
-  z-index: 5;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  background: linear-gradient(160deg, #e0e7d7, #b6c8ac);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  transform-origin: top center;
-  transform: rotateX(0deg);
-  transition:
-    transform 0.8s ease,
-    opacity 0.3s ease 0.5s;
-  backface-visibility: visible;
-}
-
-/* Gold wax seal */
-
-.wax-seal {
-  position: absolute;
-  z-index: 6;
-  top: 65px;
-  left: 50%;
-  width: 61px;
-  height: 61px;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  transform: translateX(-50%);
-  border: 3px double #f0d99d;
-  border-radius: 45% 52% 48% 55%;
-  background:
-    radial-gradient(circle at 30% 25%, #e9d39a, #b28a42 65%, #8b682e);
-  color: #fff9e7;
-  font-family: serif;
-  font-size: 29px;
-  box-shadow:
-    0 3px 5px #26392035,
-    inset 0 0 0 3px #a9843d;
-  cursor: pointer;
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
-}
-
-.wax-seal:hover {
-  transform: translateX(-50%) scale(1.07);
-}
-
-.wax-seal span {
-  text-shadow: 0 1px 2px #6e5024;
-}
-
-/* Open state */
-
-.envelope-scene.is-open .envelope-flap {
-  transform: rotateX(180deg);
-  opacity: 0.2;
-}
-
-.envelope-scene.is-open .wax-seal {
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -20px) scale(0.7);
-}
-
-.envelope-scene.is-open .letter-preview {
-  transform: translateY(-115px);
-}
-
-/* Instructions beneath the envelope */
-
-.envelope-hint {
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  animation: seal-pulse 2s ease-in-out infinite;
-}
-
-@keyframes seal-pulse {
-  0%, 100% {
+  .reveal-on-scroll,
+  body.scroll-animations-ready .reveal-on-scroll:not(.is-visible) {
     opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
+    transform: none;
   }
 }
-
-@media (max-width: 420px) {
-  .envelope-scene {
-    height: 265px;
-  }
-
-  .envelope-body {
-    height: 185px;
-  }
-
-  .envelope-flap {
-    height: 108px;
-  }
-
-  .wax-seal {
-    top: 56px;
-  }
-
-  .letter-preview {
-    height: 205px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .envelope-flap,
-  .wax-seal,
-  .letter-preview {
-    transition-duration: 0.01ms;
-  }
-
-  .envelope-hint {
-    animation: none;
-  }
-}
- 
