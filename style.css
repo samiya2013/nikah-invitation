@@ -640,34 +640,27 @@ body.scroll-animations-ready .reveal-on-scroll:not(.is-visible) {
     transform: none;
   }
 }
-/* ROYAL NIKAH INVITATION TYPOGRAPHY */
-/* Elegant typography for the nikah invitation */
-
-.invitation {
-  font-family: 'Cormorant Garamond', serif;
-}
-
-.invitation h1,
-.invitation h2 {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-}
+/* Handwritten calligraphy style */
 
 .invitation .names h2 {
   font-family: 'Allura', cursive;
-  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 400;
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
   line-height: 1.2;
 }
 
 .invitation .blessing,
 .invitation .closing,
 .invitation .footer-blessing {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Allura', cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.8rem;
 }
 
-.invitation .detail,
-.invitation .countdown-heading {
+.invitation h1,
+.invitation .invitation-kicker,
+.invitation .for-their-nikah {
   font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
 }
