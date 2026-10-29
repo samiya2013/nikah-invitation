@@ -639,151 +639,33 @@ body.scroll-animations-ready .reveal-on-scroll:not(.is-visible) {
     opacity: 1;
     transform: none;
   }
-}
-/* ROYAL NIKAH INVITATION TYPOGRAPHY */
+}/* Elegant typography for the nikah invitation */
 
 .invitation {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  color: #fff8e9;
-  letter-spacing: 0.3px;
+  font-family: 'Cormorant Garamond', serif;
 }
 
-.invitation-frame {
-  padding: clamp(28px, 5vw, 52px);
+.invitation h1,
+.invitation h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
 }
 
-/* Bismillah and small decorative labels */
-.invitation .eyebrow {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(14px, 2vw, 17px);
-  letter-spacing: 2px;
-  line-height: 1.9;
-  color: #e8d5a0;
-}
-
-/* Main invitation heading */
-.invitation h1 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(25px, 4.5vw, 38px);
-  font-weight: 500;
-  line-height: 1.35;
-  letter-spacing: 0.4px;
-  color: #e8d5a0;
-  margin: 22px auto 16px;
-}
-
-/* Supporting text */
-.invitation .invitation-kicker,
-.invitation .for-their-nikah {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(18px, 2.5vw, 23px);
-  line-height: 1.65;
-  color: #f8f0dc;
-}
-
-/* Bride and groom names */
 .invitation .names h2 {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(36px, 7vw, 54px);
+  font-family: 'Allura', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: 0.5px;
-  color: #e8d5a0;
-  margin: 10px 0;
 }
 
-.invitation .ampersand {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 36px;
-  font-style: italic;
-  color: #fff8e9;
-}
-
-/* Blessing and closing message */
 .invitation .blessing,
 .invitation .closing,
 .invitation .footer-blessing {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(18px, 2.4vw, 22px);
-  font-weight: 400;
-  line-height: 1.8;
-  color: #f8f0dc;
-}
-
-.invitation .footer-blessing {
-  color: #e8d5a0;
+  font-family: 'Cormorant Garamond', serif;
   font-style: italic;
 }
 
-/* Event details */
-.invitation .detail-label {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  color: #e8d5a0;
-}
-
-.invitation .detail strong {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(18px, 2.5vw, 22px);
-  font-weight: 500;
-  line-height: 1.5;
-  color: #fff8e9;
-}
-
-.invitation .detail span:last-child {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #f1e8d4;
-}
-
-/* Countdown */
+.invitation .detail,
 .invitation .countdown-heading {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(19px, 3vw, 24px);
-  font-weight: 400;
-  color: #e8d5a0;
-}
-
-.invitation .countdown-box span {
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: clamp(25px, 4vw, 34px);
-  font-weight: 400;
-  color: #e8d5a0;
-}
-
-.invitation .countdown-box small {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 15px;
-  color: #fff8e9;
-}
-
-/* Gold decorative ornaments */
-.invitation .ornament {
-  color: #c6a45b;
-  font-size: 27px;
-  margin: 24px 0;
-}
-
-/* Keep text comfortable on phones */
-@media (max-width: 480px) {
-  .invitation-frame {
-    padding: 28px 18px;
-  }
-
-  .invitation .eyebrow {
-    letter-spacing: 1px;
-  }
-
-  .invitation .names h2 {
-    font-size: 38px;
-  }
-
-  .invitation .blessing,
-  .invitation .closing,
-  .invitation .footer-blessing {
-    font-size: 18px;
-  }
+  font-family: 'Cormorant Garamond', serif;
 }
